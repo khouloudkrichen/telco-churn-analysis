@@ -1,0 +1,270 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="00407a2b-6807-49cf-915f-857bf7b7bd52" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DW Telco Churn</ID>
+  <Name>DW Telco Churn</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:NameMatchingCriteria</Name>
+      <Value>1</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>DW Telco Churn</DataSourceID>
+  <Schema>
+    <xs:schema id="DW_x0020_Telco_x0020_Churn" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="DW_x0020_Telco_x0020_Churn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="2b358ba9-f287-46ea-b31f-f7ab41f8effc">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_Dim_Charge" msprop:DbTableName="Dim_Charge" msprop:FriendlyName="Dim_Charge" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="62cac346-4add-4dae-be40-5258b7fa1732">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ChargeKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="ChargeKey" msprop:DbColumnName="ChargeKey" msprop:design-time-name="a5e518aa-8a69-4964-b65c-b164a9e3c39c" type="xs:int" />
+                  <xs:element name="ChargeGroup" msprop:FriendlyName="ChargeGroup" msprop:DbColumnName="ChargeGroup" msprop:design-time-name="f95f6938-e3de-427c-b0e4-0a9888032d1f" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Contract" msprop:DbTableName="Dim_Contract" msprop:FriendlyName="Dim_Contract" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="1be0aec1-cc1e-4188-97e2-34bae060c92a">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ContractKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="ContractKey" msprop:DbColumnName="ContractKey" msprop:design-time-name="c9974340-19b2-4b7c-8e5b-72d26e8213b0" type="xs:int" />
+                  <xs:element name="Contract" msprop:FriendlyName="Contract" msprop:DbColumnName="Contract" msprop:design-time-name="d6edbce6-b67f-4290-ad21-5214ae7c94db" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="PaperlessBilling" msprop:FriendlyName="PaperlessBilling" msprop:DbColumnName="PaperlessBilling" msprop:design-time-name="3e2fed0d-1119-4174-b027-a01984e53f35" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="PaymentMethod" msprop:FriendlyName="PaymentMethod" msprop:DbColumnName="PaymentMethod" msprop:design-time-name="cbc56933-7182-4da3-bb46-79fb99dddea0" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="100" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Customer" msprop:DbTableName="Dim_Customer" msprop:FriendlyName="Dim_Customer" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="8912c684-5ee9-434f-baac-3c607d95749e">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CustomerKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="CustomerKey" msprop:DbColumnName="CustomerKey" msprop:design-time-name="1eaa0eec-7e21-4bb3-b5f1-e21b014ab601" type="xs:int" />
+                  <xs:element name="customerID" msprop:FriendlyName="customerID" msprop:DbColumnName="customerID" msprop:design-time-name="9554c5f2-14c7-4aa7-a22b-568e236dca98" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="gender" msprop:FriendlyName="gender" msprop:DbColumnName="gender" msprop:design-time-name="2c710c54-1068-4547-a19d-f2e012668ebb" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="SeniorCitizen" msprop:FriendlyName="SeniorCitizen" msprop:DbColumnName="SeniorCitizen" msprop:design-time-name="71f19569-6fea-4be3-aefe-2ca7de816b95" type="xs:int" minOccurs="0" />
+                  <xs:element name="Partner" msprop:FriendlyName="Partner" msprop:DbColumnName="Partner" msprop:design-time-name="2019d853-0aee-40a9-bc54-d860feb9371b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Dependents" msprop:FriendlyName="Dependents" msprop:DbColumnName="Dependents" msprop:design-time-name="9ccaa0a6-6c51-4f7d-9e71-4a8e14288ec7" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="10" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Service" msprop:DbTableName="Dim_Service" msprop:FriendlyName="Dim_Service" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="077a4412-9509-4a7a-87b8-405a827260ab">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ServiceKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="ServiceKey" msprop:DbColumnName="ServiceKey" msprop:design-time-name="f57a6bda-b33f-48bf-b8f7-195db0fd1437" type="xs:int" />
+                  <xs:element name="PhoneService" msprop:FriendlyName="PhoneService" msprop:DbColumnName="PhoneService" msprop:design-time-name="cbc3358f-217f-41aa-a80b-457dced4ccda" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="20" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="MultipleLines" msprop:FriendlyName="MultipleLines" msprop:DbColumnName="MultipleLines" msprop:design-time-name="521b53db-b5d2-4b98-8a8f-0042c8cc2e57" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="InternetService" msprop:FriendlyName="InternetService" msprop:DbColumnName="InternetService" msprop:design-time-name="64d6050a-c8bf-4a49-85d1-a49c9290ee35" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="OnlineSecurity" msprop:FriendlyName="OnlineSecurity" msprop:DbColumnName="OnlineSecurity" msprop:design-time-name="9354e8f8-53cf-4fad-af15-bba545cf0239" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="OnlineBackup" msprop:FriendlyName="OnlineBackup" msprop:DbColumnName="OnlineBackup" msprop:design-time-name="7973e4c8-fd28-4aef-93f9-58cdddaf1a4c" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="DeviceProtection" msprop:FriendlyName="DeviceProtection" msprop:DbColumnName="DeviceProtection" msprop:design-time-name="96d4f362-4d3f-4fc1-af6d-100e9db6c8f2" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="TechSupport" msprop:FriendlyName="TechSupport" msprop:DbColumnName="TechSupport" msprop:design-time-name="1eae7891-85dc-4312-afd7-3cb72f1096fe" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="StreamingTV" msprop:FriendlyName="StreamingTV" msprop:DbColumnName="StreamingTV" msprop:design-time-name="0e5949bf-2417-487a-ad46-b16e3fe9cad0" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="StreamingMovies" msprop:FriendlyName="StreamingMovies" msprop:DbColumnName="StreamingMovies" msprop:design-time-name="780a376d-9665-4815-8561-9d7fc08845e8" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Dim_Tenure" msprop:DbTableName="Dim_Tenure" msprop:FriendlyName="Dim_Tenure" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="33f233ec-c4a6-4340-b7ce-e266817c3e87">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="TenureKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="TenureKey" msprop:DbColumnName="TenureKey" msprop:design-time-name="ad476a3d-5d72-4a33-b4fe-d2f302546453" type="xs:int" />
+                  <xs:element name="tenure" msprop:FriendlyName="tenure" msprop:DbColumnName="tenure" msprop:design-time-name="df8ae33d-91d5-4aeb-928f-c968a049bfb1" type="xs:int" minOccurs="0" />
+                  <xs:element name="TenureGroup" msprop:FriendlyName="TenureGroup" msprop:DbColumnName="TenureGroup" msprop:design-time-name="40262678-6946-4fb1-9fa7-deff94eb0613" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="30" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Fact_Churn" msprop:DbTableName="Fact_Churn" msprop:FriendlyName="Fact_Churn" msprop:TableType="Table" msprop:DbSchemaName="dbo" msprop:design-time-name="23e24310-cdac-4e6a-8700-301ae6e9aac9">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="FactKey" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:FriendlyName="FactKey" msprop:DbColumnName="FactKey" msprop:design-time-name="95a183ce-77a7-4789-9993-33a72f764ddd" type="xs:int" />
+                  <xs:element name="CustomerKey" msprop:FriendlyName="CustomerKey" msprop:DbColumnName="CustomerKey" msprop:design-time-name="a3d686f5-6557-432b-8315-7e0a7eeaaaae" type="xs:int" minOccurs="0" />
+                  <xs:element name="ServiceKey" msprop:FriendlyName="ServiceKey" msprop:DbColumnName="ServiceKey" msprop:design-time-name="9cf364f1-ccc0-4515-879c-51b756ee97b9" type="xs:int" minOccurs="0" />
+                  <xs:element name="ContractKey" msprop:FriendlyName="ContractKey" msprop:DbColumnName="ContractKey" msprop:design-time-name="98cc5dbc-05ac-4efa-ab19-f06c048919cf" type="xs:int" minOccurs="0" />
+                  <xs:element name="TenureKey" msprop:FriendlyName="TenureKey" msprop:DbColumnName="TenureKey" msprop:design-time-name="0117ff3e-b9f3-4c9e-83b0-8983bf2336a8" type="xs:int" minOccurs="0" />
+                  <xs:element name="ChargeKey" msprop:FriendlyName="ChargeKey" msprop:DbColumnName="ChargeKey" msprop:design-time-name="7a594e07-6ea8-4746-bee1-2d5dddda938f" type="xs:int" minOccurs="0" />
+                  <xs:element name="CustomerCount" msprop:FriendlyName="CustomerCount" msprop:DbColumnName="CustomerCount" msprop:design-time-name="96471816-77a4-43aa-82b2-816a6086af98" type="xs:int" minOccurs="0" />
+                  <xs:element name="ChurnFlag" msprop:FriendlyName="ChurnFlag" msprop:DbColumnName="ChurnFlag" msprop:design-time-name="b9a2195e-47a2-40bd-b70e-98d44a9d65d2" type="xs:int" minOccurs="0" />
+                  <xs:element name="MonthlyCharges" msprop:FriendlyName="MonthlyCharges" msprop:DbColumnName="MonthlyCharges" msprop:design-time-name="7fd72dcd-3c45-4e74-9f2f-298f5db82992" type="xs:double" minOccurs="0" />
+                  <xs:element name="TotalCharges" msprop:FriendlyName="TotalCharges" msprop:DbColumnName="TotalCharges" msprop:design-time-name="4a28863b-e2b3-454b-bf78-b8695db6171e" type="xs:double" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Charge" />
+          <xs:field xpath="ChargeKey" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Contract_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Contract" />
+          <xs:field xpath="ContractKey" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Customer_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Customer" />
+          <xs:field xpath="CustomerKey" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Service_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Service" />
+          <xs:field xpath="ServiceKey" />
+        </xs:unique>
+        <xs:unique name="dbo_Dim_Tenure_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Dim_Tenure" />
+          <xs:field xpath="TenureKey" />
+        </xs:unique>
+        <xs:unique name="dbo_Fact_Churn_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_Fact_Churn" />
+          <xs:field xpath="FactKey" />
+        </xs:unique>
+      </xs:element>
+      <xs:annotation>
+        <xs:appinfo>
+          <msdata:Relationship name="Fact_Churn-Dim_Customer" msdata:parent="dbo_Dim_Customer" msdata:child="dbo_Fact_Churn" msdata:parentkey="CustomerKey" msdata:childkey="CustomerKey" />
+          <msdata:Relationship name="Fact_Churn-Dim_Service" msdata:parent="dbo_Dim_Service" msdata:child="dbo_Fact_Churn" msdata:parentkey="ServiceKey" msdata:childkey="ServiceKey" />
+          <msdata:Relationship name="Fact_Churn-Dim_Contract" msdata:parent="dbo_Dim_Contract" msdata:child="dbo_Fact_Churn" msdata:parentkey="ContractKey" msdata:childkey="ContractKey" />
+          <msdata:Relationship name="Fact_Churn-Dim_Tenure" msdata:parent="dbo_Dim_Tenure" msdata:child="dbo_Fact_Churn" msdata:parentkey="TenureKey" msdata:childkey="TenureKey" />
+          <msdata:Relationship name="Fact_Churn-Dim_Charge" msdata:parent="dbo_Dim_Charge" msdata:child="dbo_Fact_Churn" msdata:parentkey="ChargeKey" msdata:childkey="ChargeKey" />
+        </xs:appinfo>
+      </xs:annotation>
+    </xs:schema>
+    <DW_x0020_Telco_x0020_Churn xmlns="" />
+  </Schema>
+</DataSourceView>

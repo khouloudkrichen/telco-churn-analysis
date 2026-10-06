@@ -1,0 +1,2120 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2026 9:05:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-B5POHQ4"
+  DTS:CreatorName="DESKTOP-B5POHQ4\MSI"
+  DTS:DTSID="{0B74EF07-0147-4F63-B451-F71B1FFA8745}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="03_Load_Dimensions"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{F7777872-369A-4295-A93A-12F47EACE74F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C3CFE7BF-D2B3-4CDA-B8BB-1F8BD7C5D934}"
+      DTS:ObjectName="DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-B5POHQ4\MSSQLSERVER11;User ID=sa;Initial Catalog=DW_Telco_Churn;Provider=SQLNCLI11.1;Application Name=SSIS-03_Load_Dimensions-{C3CFE7BF-D2B3-4CDA-B8BB-1F8BD7C5D934}DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABGxkQN8RGkmVRl0dsET35AAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAADXjBccmzIMO++7SeHgD8SInA2UyOYC+QmIuMnD0X3jsAAAAAAOgAAAAAIAACAAAABuK6Jr1HVXUSzb+cfgv4qU8pVKzzMgeQdwU2qLRaqobhAAAADeRC4K9qizDgqN4kCz6AebQAAAAKwccbR6Ig6QiOtOx2f5SVdIUzby+YL1uE8YLIRWG4IBp8SZdez6Ums2EkRb6nVgpT9GB3X0nyg/2yBgKxSRoLs</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Charger les dimensions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{E011E214-9C21-4DDA-9A78-E2919B15D3FC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger les dimensions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger les dimensions\Destination Dim_Charge"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Dim_Charge"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Charge]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Destination Dim_Charge.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB].Columns[ChargeGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ChargeGroup"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB].ExternalColumns[ChargeGroup]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB].ExternalColumns[ChargeKey]"
+                      dataType="i4"
+                      name="ChargeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB].ExternalColumns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="ChargeGroup" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Destination Dim_Charge.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Charge.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Charge.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Charge.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Charge.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Destination Dim_Contract"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Dim_Contract"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Contract]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Destination Dim_Contract.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].Columns[Contract]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Contract"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[Contract]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].Columns[PaperlessBilling]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PaperlessBilling"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].Columns[PaymentMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="PaymentMethod"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[ContractKey]"
+                      dataType="i4"
+                      name="ContractKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Destination Dim_Contract.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Contract.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Contract.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Contract.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Destination Dim_Customer"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Dim_Customer"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Destination Dim_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].Columns[SeniorCitizen]"
+                      cachedDataType="i4"
+                      cachedName="SeniorCitizen"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].Columns[Partner]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Partner"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Partner]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].Columns[Dependents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Dependents"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Dependents]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      dataType="i4"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Destination Dim_Customer.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Customer.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Customer.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Customer.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Destination Dim_Service"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Dim_Service"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Service]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Destination Dim_Service.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[PhoneService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PhoneService"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[PhoneService]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[MultipleLines]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MultipleLines"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[MultipleLines]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[InternetService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InternetService"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[InternetService]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[OnlineSecurity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineSecurity"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[OnlineBackup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineBackup"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[DeviceProtection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceProtection"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[TechSupport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TechSupport"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[TechSupport]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[StreamingTV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingTV"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingTV]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].Columns[StreamingMovies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingMovies"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[ServiceKey]"
+                      dataType="i4"
+                      name="ServiceKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Destination Dim_Service.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Service.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Service.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Service.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Destination Dim_Tenure"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Dim_Tenure"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Dim_Tenure]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Destination Dim_Tenure.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].Columns[tenure]"
+                      cachedDataType="i4"
+                      cachedName="tenure"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[tenure]" />
+                    <inputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].Columns[TenureGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="TenureGroup"
+                      externalMetadataColumnId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].ExternalColumns[TenureGroup]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[TenureGroup]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].ExternalColumns[TenureKey]"
+                      dataType="i4"
+                      name="TenureKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      dataType="i4"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB].ExternalColumns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="30"
+                      name="TenureGroup" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Destination Dim_Tenure.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Tenure.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Destination Dim_Tenure.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Destination Dim_Tenure.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Source Dim_Charge"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Dim_Charge"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    CASE
+        WHEN MonthlyCharges &lt; 35 THEN 'Low'
+        WHEN MonthlyCharges BETWEEN 35 AND 70 THEN 'Medium'
+        ELSE 'High'
+    END AS ChargeGroup
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Source Dim_Charge.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB].ExternalColumns[ChargeGroup]"
+                      length="6"
+                      lineageId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]"
+                      name="ChargeGroup"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB].ExternalColumns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="ChargeGroup" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ChargeGroup]"
+                      name="ChargeGroup" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Source Dim_Contract"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Dim_Contract"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    Contract,
+    PaperlessBilling,
+    PaymentMethod
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Source Dim_Contract.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      name="Contract"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      length="100"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      name="Contract" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Source Dim_Customer"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Dim_Customer"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    customerID,
+    gender,
+    SeniorCitizen,
+    Partner,
+    Dependents
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Source Dim_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      length="10"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      name="Partner"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      length="10"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      name="Dependents"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      dataType="i4"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      name="Partner" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      name="Dependents" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Source Dim_Service"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Dim_Service"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    PhoneService,
+    MultipleLines,
+    InternetService,
+    OnlineSecurity,
+    OnlineBackup,
+    DeviceProtection,
+    TechSupport,
+    StreamingTV,
+    StreamingMovies
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Source Dim_Service.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      name="InternetService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      name="InternetService" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger les dimensions\Source Dim_Tenure"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Dim_Tenure"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT DISTINCT
+    tenure,
+    CASE
+        WHEN tenure BETWEEN 0 AND 6 THEN '0-6 Month'
+        WHEN tenure BETWEEN 7 AND 12 THEN '7-12 Month'
+        WHEN tenure BETWEEN 13 AND 24 THEN '13-24 Month'
+        WHEN tenure BETWEEN 25 AND 36 THEN '25-36 Month'
+        WHEN tenure BETWEEN 37 AND 48 THEN '37-48 Month'
+        WHEN tenure BETWEEN 49 AND 62 THEN '49-62 Month'
+        ELSE '&gt; 62 Month'
+    END AS TenureGroup
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger les dimensions\Source Dim_Tenure.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      name="tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].ExternalColumns[TenureGroup]"
+                      length="11"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].Columns[TenureGroup]"
+                      name="TenureGroup"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      dataType="i4"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB].ExternalColumns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="TenureGroup" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      name="tenure" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[TenureGroup]"
+                      name="TenureGroup" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger les dimensions.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger les dimensions\Destination Dim_Customer.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger les dimensions\Source Dim_Customer.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Charger les dimensions.Paths[Sortie de source OLE DB1]"
+              endId="Package\Charger les dimensions\Destination Dim_Service.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger les dimensions\Source Dim_Service.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Charger les dimensions.Paths[Sortie de source OLE DB2]"
+              endId="Package\Charger les dimensions\Destination Dim_Contract.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger les dimensions\Source Dim_Contract.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Charger les dimensions.Paths[Sortie de source OLE DB3]"
+              endId="Package\Charger les dimensions\Destination Dim_Tenure.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger les dimensions\Source Dim_Tenure.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Charger les dimensions.Paths[Sortie de source OLE DB4]"
+              endId="Package\Charger les dimensions\Destination Dim_Charge.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger les dimensions\Source Dim_Charge.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Charger les dimensions"
+          TopLeft="78.5714287386865,29.8235293856232" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Charger les dimensions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Charger les dimensions\Source Dim_Customer"
+          TopLeft="32.1428572112809,30.5882352673059" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Charger les dimensions\Destination Dim_Customer"
+          TopLeft="17.1428571793498,123.117646950906" />
+        <EdgeLayout
+          Id="Package\Charger les dimensions.Paths[Sortie de source OLE DB]"
+          TopLeft="121.442857195315,72.1882352673059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.9294116836003"
+              Start="0,0"
+              End="0,43.4294116836003">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.4294116836003" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,41.6"
+          Id="Package\Charger les dimensions\Source Dim_Service"
+          TopLeft="304.285714933459,30.5882352673059" />
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Charger les dimensions\Destination Dim_Service"
+          TopLeft="295.000000627978,125.411764595954" />
+        <EdgeLayout
+          Id="Package\Charger les dimensions.Paths[Sortie de source OLE DB1]"
+          TopLeft="390.842857780718,72.1882352673059">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53.2235293286482"
+              Start="0,0"
+              End="0,45.7235293286482">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.7235293286482" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Charger les dimensions\Source Dim_Contract"
+          TopLeft="557.857144044674,32.1176470306712" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\Charger les dimensions\Destination Dim_Contract"
+          TopLeft="548.114286790819,117.764705779128" />
+        <EdgeLayout
+          Id="Package\Charger les dimensions.Paths[Sortie de source OLE DB2]"
+          TopLeft="646.985715417747,73.7176470306711">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44.0470587484565"
+              Start="0,0"
+              End="0,36.5470587484565">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5470587484565" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger les dimensions\Source Dim_Tenure"
+          TopLeft="804.54285787119,35.1764705574018" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Charger les dimensions\Destination Dim_Tenure"
+          TopLeft="792.3714296434,113.176470489032" />
+        <EdgeLayout
+          Id="Package\Charger les dimensions.Paths[Sortie de source OLE DB3]"
+          TopLeft="889.257143757295,76.7764705574017">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.39999993163"
+              Start="0,0"
+              End="0,28.89999993163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.89999993163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Charger les dimensions\Source Dim_Charge"
+          TopLeft="1045.74285827565,34.4117646757191" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\Charger les dimensions\Destination Dim_Charge"
+          TopLeft="1043.05714402339,105.529411672205" />
+        <EdgeLayout
+          Id="Package\Charger les dimensions.Paths[Sortie de source OLE DB4]"
+          TopLeft="1135.20000114952,76.0117646757191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5176469964862"
+              Start="0,0"
+              End="0,22.0176469964862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0176469964862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Source Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Destination Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Source Dim_Service">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Destination Dim_Service">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Source Dim_Contract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Destination Dim_Contract">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Source Dim_Tenure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Destination Dim_Tenure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Source Dim_Charge">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger les dimensions\Destination Dim_Charge">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

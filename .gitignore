@@ -1,0 +1,5 @@
+.vs/
+.python_packages/
+**/bin/
+**/obj/
+*.user

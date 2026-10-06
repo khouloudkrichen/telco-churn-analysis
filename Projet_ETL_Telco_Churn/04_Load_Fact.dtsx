@@ -1,0 +1,2357 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/4/2026 10:26:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-B5POHQ4"
+  DTS:CreatorName="DESKTOP-B5POHQ4\MSI"
+  DTS:DTSID="{FF091A9C-E5E4-4317-AE61-A0BFE418C8D7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="04_Load_Fact"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{833E45B9-7F19-4A8E-9689-B459817AC1FA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D7E9831F-B972-4D6C-A8CA-C4D61FDA772B}"
+      DTS:ObjectName="DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-B5POHQ4\MSSQLSERVER11;User ID=sa;Initial Catalog=DW_Telco_Churn;Provider=SQLNCLI11.1;Application Name=SSIS-04_Load_Fact-{D7E9831F-B972-4D6C-A8CA-C4D61FDA772B}DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABGxkQN8RGkmVRl0dsET35AAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAAC9sdH8MB+mjW26pgoS7FsmY1+Ovb1Ok6TGjOHdFQDBlgAAAAAOgAAAAAIAACAAAAAb6pZYpDE/3hqrNiiEnSkIJ4PTACIjsm9pa4H+ubqPeBAAAACpG+eoM9iwpfpG00kHWmy8QAAAAOH/XbcelkYdIv8EjqwAM3ONfZzj4RiN6/ucH3UY5GBkAEe9BEOFrJI2u9U1z+QEesH8OM0U3cEvUuJ820B7Uw4</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Charger Fact_Churn"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{9BFC1DDB-B2B3-4737-88FC-268ED839F967}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger Fact_Churn"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger Fact_Churn\Destination Fact_Churn"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Fact_Churn"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Fact_Churn]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Destination Fact_Churn.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[CustomerCount]"
+                      cachedDataType="i4"
+                      cachedName="CustomerCount"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerCount]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[CustomerCount]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[ChurnFlag]"
+                      cachedDataType="i4"
+                      cachedName="ChurnFlag"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ChurnFlag]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChurnFlag]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[MonthlyCharges]"
+                      cachedDataType="r8"
+                      cachedName="MonthlyCharges"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[TotalCharges]"
+                      cachedDataType="r8"
+                      cachedName="TotalCharges"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TotalCharges]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[CustomerKey]"
+                      cachedDataType="i4"
+                      cachedName="CustomerKey"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerKey]"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche avec correspondance].Columns[CustomerKey]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[ServiceKey]"
+                      cachedDataType="i4"
+                      cachedName="ServiceKey"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ServiceKey]"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche avec correspondance].Columns[ServiceKey]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[ContractKey]"
+                      cachedDataType="i4"
+                      cachedName="ContractKey"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ContractKey]"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche avec correspondance].Columns[ContractKey]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[TenureKey]"
+                      cachedDataType="i4"
+                      cachedName="TenureKey"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[TenureKey]"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche avec correspondance].Columns[TenureKey]" />
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].Columns[ChargeKey]"
+                      cachedDataType="i4"
+                      cachedName="ChargeKey"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ChargeKey]"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche avec correspondance].Columns[ChargeKey]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[FactKey]"
+                      dataType="i4"
+                      name="FactKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerKey]"
+                      dataType="i4"
+                      name="CustomerKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ServiceKey]"
+                      dataType="i4"
+                      name="ServiceKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ContractKey]"
+                      dataType="i4"
+                      name="ContractKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[TenureKey]"
+                      dataType="i4"
+                      name="TenureKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ChargeKey]"
+                      dataType="i4"
+                      name="ChargeKey" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[CustomerCount]"
+                      dataType="i4"
+                      name="CustomerCount" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[ChurnFlag]"
+                      dataType="i4"
+                      name="ChurnFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      dataType="r8"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      dataType="r8"
+                      name="TotalCharges" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Destination Fact_Churn.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Destination Fact_Churn.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Destination Fact_Churn.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Destination Fact_Churn.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Lookup Dim_Charge"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup Dim_Charge"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Charge]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Charge]) [refTable]
+where [refTable].[ChargeGroup] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ChargeKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ChargeGroup" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche].Columns[ChargeGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="6"
+                      cachedName="ChargeGroup"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">ChargeGroup</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche avec correspondance].Columns[ChargeKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche avec correspondance].Columns[ChargeKey]"
+                      name="ChargeKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">ChargeKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Lookup Dim_Contract"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup Dim_Contract"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Contract]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Contract]) [refTable]
+where [refTable].[Contract] = ? and [refTable].[PaperlessBilling] = ? and [refTable].[PaymentMethod] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ContractKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Contract" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaperlessBilling" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PaymentMethod" dataType="DT_STR" length="100" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Contract]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche].Columns[Contract]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Contract"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Contract]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">Contract</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche].Columns[PaperlessBilling]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PaperlessBilling"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">PaperlessBilling</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche].Columns[PaymentMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="PaymentMethod"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">PaymentMethod</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche avec correspondance].Columns[ContractKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche avec correspondance].Columns[ContractKey]"
+                      name="ContractKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">ContractKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Lookup Dim_Customer"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup Dim_Customer"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Customer]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Customer]) [refTable]
+where [refTable].[customerID] = ? and [refTable].[gender] = ? and [refTable].[SeniorCitizen] = ? and [refTable].[Partner] = ? and [refTable].[Dependents] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="CustomerKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customerID" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="gender" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="SeniorCitizen" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Partner" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Dependents" dataType="DT_STR" length="10" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[customerID]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[gender]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Partner]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Dependents]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[customerID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">customerID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="gender"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[gender]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">gender</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche].Columns[SeniorCitizen]"
+                      cachedDataType="i4"
+                      cachedName="SeniorCitizen"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">SeniorCitizen</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche].Columns[Partner]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Partner"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Partner]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">Partner</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche].Columns[Dependents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Dependents"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Dependents]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">Dependents</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche avec correspondance].Columns[CustomerKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche avec correspondance].Columns[CustomerKey]"
+                      name="CustomerKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">CustomerKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Lookup Dim_Service"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup Dim_Service"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Service]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Service]) [refTable]
+where [refTable].[PhoneService] = ? and [refTable].[MultipleLines] = ? and [refTable].[InternetService] = ? and [refTable].[OnlineSecurity] = ? and [refTable].[OnlineBackup] = ? and [refTable].[DeviceProtection] = ? and [refTable].[TechSupport] = ? and [refTable].[StreamingTV] = ? and [refTable].[StreamingMovies] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ServiceKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="PhoneService" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="MultipleLines" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="InternetService" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OnlineSecurity" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="OnlineBackup" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="DeviceProtection" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="TechSupport" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StreamingTV" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="StreamingMovies" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PhoneService]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MultipleLines]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[InternetService]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TechSupport]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingTV]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Service.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[PhoneService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PhoneService"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PhoneService]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">PhoneService</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[MultipleLines]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MultipleLines"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MultipleLines]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">MultipleLines</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[InternetService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InternetService"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[InternetService]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">InternetService</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[OnlineSecurity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineSecurity"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">OnlineSecurity</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[OnlineBackup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineBackup"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">OnlineBackup</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[DeviceProtection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceProtection"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">DeviceProtection</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[TechSupport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TechSupport"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TechSupport]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">TechSupport</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[StreamingTV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingTV"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingTV]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">StreamingTV</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche].Columns[StreamingMovies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingMovies"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">StreamingMovies</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche avec correspondance].Columns[ServiceKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche avec correspondance].Columns[ServiceKey]"
+                      name="ServiceKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">ServiceKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Lookup Dim_Tenure"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Recherche;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;6"
+              description="Joint des colonnes supplémentaires au flux de données en recherchant des valeurs dans une table. Par exemple, joignez la colonne 'id employé' à la table des employés afin d'obtenir la 'date d'embauche' et le 'nom de l'employé'. Nous recommandons cette transformation lorsque la table de recherche peut être stockée en mémoire."
+              name="Lookup Dim_Tenure"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Spécifie l'instruction SQL qui génère la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[Dim_Tenure]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie une instruction SQL qui utilise des paramètres pour générer la table de correspondance."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[Dim_Tenure]) [refTable]
+where [refTable].[tenure] = ? and [refTable].[TenureGroup] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de connexion utilisé pour accéder au dataset de référence."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de cache de la table de correspondance."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie comment la transformation de recherche gère les lignes sans entrées correspondantes dans le jeu de données de référence."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le pourcentage du cache alloué aux lignes sans entrées correspondantes dans le dataset de référence."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 32 bits."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Utilisation maximale de la mémoire pour le cache de référence sur une plateforme 64 bits."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indique si les métadonnées sont à référencer en format XML."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TenureKey" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="tenure" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TenureGroup" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Spécifie la liste d'identificateurs de traçabilité se mappant aux paramètres utilisés dans la propriété SQLCommand par l'instruction SQL. Les entrées dans la liste sont séparées par des points-virgules."
+                  name="ParameterMap">#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[tenure]};#{Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TenureGroup]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Détermine si les clés dupliquées dans les données de référence doivent être traitées en tant qu'erreurs lorsque le mode Cache complet est utilisé."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Gestionnaire de connexions utilisé pour accéder aux données de correspondance."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche]"
+                  name="Entrée de recherche">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche].Columns[tenure]"
+                      cachedDataType="i4"
+                      cachedName="tenure"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[tenure]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">tenure</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche].Columns[TenureGroup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="11"
+                      cachedName="TenureGroup"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TenureGroup]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence sur laquelle une colonne se lie."
+                          name="JoinToReferenceColumn">TenureGroup</property>
+                        <property
+                          dataType="System.Null"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche avec correspondance]"
+                  errorOrTruncationOperation="Recherche"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Sortie de recherche avec correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche avec correspondance].Columns[TenureKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copie de colonnes"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche avec correspondance].Columns[TenureKey]"
+                      name="TenureKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Spécifie la colonne de la table de référence à partir de laquelle une colonne est copiée."
+                          name="CopyFromReferenceColumn">TenureKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche sans correspondance]"
+                  description="Sortie de recherche gérant les lignes sans entrées correspondantes dans le dataset de référence. Utilisez cette sortie lorsque la propriété NoMatchBehavior a la valeur « Envoyez les lignes sans entrées correspondantes dans la sortie sans correspondance »."
+                  exclusionGroup="1"
+                  name="Sortie de recherche sans correspondance"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie d'erreur de recherche]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de recherche"
+                  synchronousInputId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie d'erreur de recherche].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie d'erreur de recherche].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger Fact_Churn\Source Fact_Churn"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Fact_Churn"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT
+    customerID,
+    gender,
+    SeniorCitizen,
+    Partner,
+    Dependents,
+
+    PhoneService,
+    MultipleLines,
+    InternetService,
+    OnlineSecurity,
+    OnlineBackup,
+    DeviceProtection,
+    TechSupport,
+    StreamingTV,
+    StreamingMovies,
+
+    Contract,
+    PaperlessBilling,
+    PaymentMethod,
+
+    tenure,
+    CASE
+        WHEN tenure BETWEEN 0 AND 6 THEN '0-6 Month'
+        WHEN tenure BETWEEN 7 AND 12 THEN '7-12 Month'
+        WHEN tenure BETWEEN 13 AND 24 THEN '13-24 Month'
+        WHEN tenure BETWEEN 25 AND 36 THEN '25-36 Month'
+        WHEN tenure BETWEEN 37 AND 48 THEN '37-48 Month'
+        WHEN tenure BETWEEN 49 AND 62 THEN '49-62 Month'
+        ELSE '&gt; 62 Month'
+    END AS TenureGroup,
+
+    CASE
+        WHEN MonthlyCharges &lt; 35 THEN 'Low'
+        WHEN MonthlyCharges BETWEEN 35 AND 70 THEN 'Medium'
+        ELSE 'High'
+    END AS ChargeGroup,
+
+    1 AS CustomerCount,
+    ChurnFlag,
+    MonthlyCharges,
+    TotalCharges
+FROM Clean_TelcoChurn;</property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger Fact_Churn\Source Fact_Churn.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      length="10"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      name="Partner"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      length="10"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      name="Dependents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      name="InternetService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      name="Contract"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      length="100"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      name="tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TenureGroup]"
+                      length="11"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TenureGroup]"
+                      name="TenureGroup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[ChargeGroup]"
+                      length="6"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChargeGroup]"
+                      name="ChargeGroup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[CustomerCount]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerCount]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[CustomerCount]"
+                      name="CustomerCount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChurnFlag]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[ChurnFlag]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[ChurnFlag]"
+                      name="ChurnFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[MonthlyCharges]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]"
+                      name="MonthlyCharges"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TotalCharges]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TotalCharges]"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].Columns[TotalCharges]"
+                      name="TotalCharges"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      dataType="i4"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      dataType="i4"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      name="TenureGroup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      name="ChargeGroup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[CustomerCount]"
+                      dataType="i4"
+                      name="CustomerCount" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[ChurnFlag]"
+                      dataType="i4"
+                      name="ChurnFlag" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[MonthlyCharges]"
+                      dataType="r8"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB].ExternalColumns[TotalCharges]"
+                      dataType="r8"
+                      name="TotalCharges" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      name="Partner" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      name="Dependents" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      name="InternetService" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      name="Contract" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      name="tenure" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TenureGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="11"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TenureGroup]"
+                      name="TenureGroup" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ChargeGroup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="6"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ChargeGroup]"
+                      name="ChargeGroup" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerCount]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[CustomerCount]"
+                      name="CustomerCount" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ChurnFlag]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ChurnFlag]"
+                      name="ChurnFlag" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthlyCharges]"
+                      dataType="r8"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthlyCharges]"
+                      name="MonthlyCharges" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalCharges]"
+                      dataType="r8"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalCharges]"
+                      name="TotalCharges" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance]"
+              endId="Package\Charger Fact_Churn\Lookup Dim_Service.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger Fact_Churn\Lookup Dim_Customer.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance1]"
+              endId="Package\Charger Fact_Churn\Lookup Dim_Contract.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger Fact_Churn\Lookup Dim_Service.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance2]"
+              endId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger Fact_Churn\Lookup Dim_Contract.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance3]"
+              endId="Package\Charger Fact_Churn\Lookup Dim_Charge.Inputs[Entrée de recherche]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger Fact_Churn\Lookup Dim_Tenure.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance4]"
+              endId="Package\Charger Fact_Churn\Destination Fact_Churn.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de recherche avec correspondance"
+              startId="Package\Charger Fact_Churn\Lookup Dim_Charge.Outputs[Sortie de recherche avec correspondance]" />
+            <path
+              refId="Package\Charger Fact_Churn.Paths[Sortie de source OLE DB]"
+              endId="Package\Charger Fact_Churn\Lookup Dim_Customer.Inputs[Entrée de recherche]"
+              name="Sortie de source OLE DB"
+              startId="Package\Charger Fact_Churn\Source Fact_Churn.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\Charger Fact_Churn"
+          TopLeft="137.142857434798,64.2352940613423" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Charger Fact_Churn">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\Charger Fact_Churn\Source Fact_Churn"
+          TopLeft="70.0000001490117,24.4705882138447" />
+        <NodeLayout
+          Size="184.8,41.6"
+          Id="Package\Charger Fact_Churn\Lookup Dim_Customer"
+          TopLeft="63.3571429803055,104.911764618744" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de source OLE DB]"
+          TopLeft="154.678571564659,66.0705882138447">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.8411764048994"
+              Start="0,0"
+              End="0,31.3411764048994">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.3411764048994" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Charger Fact_Churn\Lookup Dim_Service"
+          TopLeft="69.2857144332053,182.764705722153" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance]"
+          TopLeft="155.921428706755,146.511764618744">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.2529411034085"
+              Start="0,0"
+              End="0,28.7529411034085">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.7529411034085" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,8.57178305170424,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="180,41.6"
+          Id="Package\Charger Fact_Churn\Lookup Dim_Contract"
+          TopLeft="67.1428572857866,260.764705653783" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance1]"
+          TopLeft="156.614285859496,224.364705722153">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.3999999316301"
+              Start="0,0"
+              End="0,28.8999999316301">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8999999316301" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,8.64531246581504,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Charger Fact_Churn\Lookup Dim_Tenure"
+          TopLeft="68.5714287173992,341.058823230461" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance2]"
+          TopLeft="156.257143001593,302.364705653783">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.6941175766779"
+              Start="0,0"
+              End="0,31.1941175766779">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.1941175766779" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,9.79237128833896,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Charger Fact_Churn\Lookup Dim_Charge"
+          TopLeft="75.0000001596553,414.470587871995" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance3]"
+          TopLeft="158.585714438527,382.658823230461">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,31.811764641534"
+              Start="0,0"
+              End="0,24.311764641534">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.311764641534" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,6.35119482076698,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Charger Fact_Churn\Destination Fact_Churn"
+          TopLeft="63.0612246240367,505.147898736516" />
+        <EdgeLayout
+          Id="Package\Charger Fact_Churn.Paths[Sortie de recherche avec correspondance4]"
+          TopLeft="159.430612391846,456.070587871995">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.0773108645218"
+              Start="0,0"
+              End="0,41.5773108645218">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.5773108645218" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-91.67701171875,14.9839679322609,183.3540234375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Source Fact_Churn">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Lookup Dim_Customer">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Lookup Dim_Service">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Service]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Lookup Dim_Contract">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Contract]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Lookup Dim_Tenure">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Tenure]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Lookup Dim_Charge">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[Dim_Charge]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger Fact_Churn\Destination Fact_Churn">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,1407 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/3/2026 4:48:43 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-B5POHQ4"
+  DTS:CreatorName="DESKTOP-B5POHQ4\MSI"
+  DTS:DTSID="{B4B7C425-8CD5-4378-A51C-A38D8E89D448}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="01_Load_Staging"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{0F52E715-25FF-43D9-8E71-8923D97D66E4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9B692CB1-FBCE-4999-95C0-7C8A3BDA1895}"
+      DTS:ObjectName="DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-B5POHQ4\MSSQLSERVER11;User ID=sa;Initial Catalog=DW_Telco_Churn;Provider=SQLNCLI11.1;Application Name=SSIS-01_Load_Staging-{9B692CB1-FBCE-4999-95C0-7C8A3BDA1895}DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABGxkQN8RGkmVRl0dsET35AAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABfFmPKysqgKD61jWIYpvpRQOK+9o3DddaQj3+um9K0WgAAAAAOgAAAAAIAACAAAAD7ep11k8xGOGurigHiEJY8k2pqa7cA4kSE0tn0e2UxjxAAAAB5LeuXnMa6IpPjhM+Hcf3sQAAAAPItnOFQH/486xYbKe/CXMvSiEGzVsuQsh4t4qsWoYWKqbhu0OH/S0n1lNSSR6sVfWdOwZjwihmem8jb4URTi1U</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[FF_Telco_Churn_CSV]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{8D50A32F-94FA-4EFC-9BF0-03E8D05902ED}"
+      DTS:ObjectName="FF_Telco_Churn_CSV">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1036"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="D:\2emeingenierie\Business\Projet_ETL_Telco_Churn\01_Data\WA_Fn-UseC_-Telco-Customer-Churn.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="customerID"
+              DTS:DTSID="{F8F046BB-F6FD-44FD-AC4C-675DE5EF4BDC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gender"
+              DTS:DTSID="{E544FE66-1F30-436B-A5ED-AAC45604BD2D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="SeniorCitizen"
+              DTS:DTSID="{E385F317-73B1-4611-9431-5613C91A6B7C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Partner"
+              DTS:DTSID="{3A10AD7A-81BD-44C0-99D0-E95BEFBF802C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Dependents"
+              DTS:DTSID="{3E75E151-82F0-4F0F-B544-CDE87F9196E5}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="tenure"
+              DTS:DTSID="{A083D908-B324-4792-BE63-BEA8CB598990}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PhoneService"
+              DTS:DTSID="{FA36A8A1-CED9-4395-A0FA-D2106D6F4699}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MultipleLines"
+              DTS:DTSID="{5211CA49-3C59-4DC9-A629-B55A22312840}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="InternetService"
+              DTS:DTSID="{7F98B214-C1CF-4E42-A702-2872C08BC4A1}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OnlineSecurity"
+              DTS:DTSID="{B6C05929-5556-423E-BD61-F919946BD047}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="OnlineBackup"
+              DTS:DTSID="{2048B896-0FCE-466F-8F71-75769E01849C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="DeviceProtection"
+              DTS:DTSID="{DF96BCFA-FC62-439A-BF9E-33D9866A5354}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TechSupport"
+              DTS:DTSID="{7125FA87-D347-4473-B592-99E163973405}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StreamingTV"
+              DTS:DTSID="{9545F904-E256-4736-8AA3-D6AD4F4AD113}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="StreamingMovies"
+              DTS:DTSID="{4F7AEF7D-C452-456F-B7EF-16BADD9B2514}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Contract"
+              DTS:DTSID="{2DC4F46D-C57C-4375-916D-7E3E76751A2B}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaperlessBilling"
+              DTS:DTSID="{05504BC8-701B-4CE4-BF32-FD71FDADBAC8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="PaymentMethod"
+              DTS:DTSID="{6F9298C9-E9CF-4CC1-9128-E76841B8E594}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="MonthlyCharges"
+              DTS:DTSID="{663FD811-5F0D-48D6-A5E3-739910A279B8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="TotalCharges"
+              DTS:DTSID="{86A82FE9-D6DB-498D-96D2-40A62E6FAE8C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="10"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Churn"
+              DTS:DTSID="{5DB3037E-8D85-4F2E-ADA9-7E0566E3DC8D}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Charger CSV vers Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{E89D6DA6-A37F-43E8-9DB4-BB1B92B198F5}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Charger CSV vers Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Charger CSV vers Staging\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Stg_TelcoChurn]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger CSV vers Staging\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[SeniorCitizen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SeniorCitizen"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[SeniorCitizen]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Partner]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Partner"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Partner]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Dependents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Dependents"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Dependents]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[tenure]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="tenure"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[tenure]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PhoneService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PhoneService"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PhoneService]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[MultipleLines]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MultipleLines"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MultipleLines]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[InternetService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InternetService"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[InternetService]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[OnlineSecurity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineSecurity"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineSecurity]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[OnlineBackup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineBackup"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineBackup]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[DeviceProtection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceProtection"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[DeviceProtection]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[TechSupport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TechSupport"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TechSupport]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[StreamingTV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingTV"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingTV]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[StreamingMovies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingMovies"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingMovies]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Contract]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Contract"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Contract]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PaperlessBilling]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PaperlessBilling"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaperlessBilling]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PaymentMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="PaymentMethod"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaymentMethod]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[MonthlyCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthlyCharges"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MonthlyCharges]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[TotalCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TotalCharges"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TotalCharges]" />
+                    <inputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Churn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Churn"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Churn]"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Churn]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Churn" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Charger CSV vers Staging\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger CSV vers Staging\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger CSV vers Staging\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Charger CSV vers Staging\Source du fichier plat"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Source du fichier plat;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Source du fichier plat"
+              localeId="1036"
+              name="Source du fichier plat"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Spécifie si les colonnes dont la longueur est zéro sont traitées comme des valeurs NULL."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom d'une colonne de sortie contenant le nom du fichier. Si aucun nom n'est spécifié, aucune colonne de sortie contenant le nom du fichier ne sera générée."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Charger CSV vers Staging\Source du fichier plat.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[FF_Telco_Churn_CSV]"
+                  connectionManagerRefId="Package.ConnectionManagers[FF_Telco_Churn_CSV]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat]"
+                  name="Sortie de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[gender]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[SeniorCitizen]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[SeniorCitizen]"
+                      name="SeniorCitizen"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Partner]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Partner]"
+                      name="Partner"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Dependents]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Dependents]"
+                      name="Dependents"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[tenure]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[tenure]"
+                      name="tenure"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PhoneService]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PhoneService]"
+                      name="PhoneService"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[MultipleLines]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MultipleLines]"
+                      name="MultipleLines"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[InternetService]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[InternetService]"
+                      name="InternetService"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[OnlineSecurity]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineSecurity]"
+                      name="OnlineSecurity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[OnlineBackup]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[OnlineBackup]"
+                      name="OnlineBackup"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[DeviceProtection]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[DeviceProtection]"
+                      name="DeviceProtection"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[TechSupport]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TechSupport]"
+                      name="TechSupport"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[StreamingTV]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingTV]"
+                      name="StreamingTV"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[StreamingMovies]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[StreamingMovies]"
+                      name="StreamingMovies"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Contract]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Contract]"
+                      name="Contract"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PaperlessBilling]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaperlessBilling]"
+                      name="PaperlessBilling"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PaymentMethod]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[PaymentMethod]"
+                      name="PaymentMethod"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[MonthlyCharges]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[MonthlyCharges]"
+                      name="MonthlyCharges"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[TotalCharges]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[TotalCharges]"
+                      name="TotalCharges"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Churn]"
+                      length="50"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].Columns[Churn]"
+                      name="Churn"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si les données sont au format binaire."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Churn" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source de fichier plat">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Colonne de sortie d'erreur de source de fichier plat"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[Colonne de sortie d'erreur de source de fichier plat]"
+                      name="Colonne de sortie d'erreur de source de fichier plat" />
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie d'erreur de source de fichier plat].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Charger CSV vers Staging.Paths[Sortie de source de fichier plat]"
+              endId="Package\Charger CSV vers Staging\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source de fichier plat"
+              startId="Package\Charger CSV vers Staging\Source du fichier plat.Outputs[Sortie de source de fichier plat]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="199.2,41.6"
+          Id="Package\Charger CSV vers Staging"
+          TopLeft="117.142857392224,71.8823528781688" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Charger CSV vers Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="178.4,41.6"
+          Id="Package\Charger CSV vers Staging\Source du fichier plat"
+          TopLeft="92.1428573390051,22.1764705687968" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Charger CSV vers Staging\Destination OLE DB"
+          TopLeft="245.000000521541,123.117646950906" />
+        <EdgeLayout
+          Id="Package\Charger CSV vers Staging.Paths[Sortie de source de fichier plat]"
+          TopLeft="181.342857339005,63.7764705687968">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="148.857143182536,59.3411763821094"
+              Start="0,0"
+              End="148.857143182536,51.8411763821094">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.6705881910547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.6705881910547"
+                    Point2="0,29.6705881910547"
+                    Point3="4,29.6705881910547" />
+                  <mssgle:LineSegment
+                    End="144.857143182536,29.6705881910547" />
+                  <mssgle:CubicBezierSegment
+                    Point1="144.857143182536,29.6705881910547"
+                    Point2="148.857143182536,29.6705881910547"
+                    Point3="148.857143182536,33.6705881910547" />
+                  <mssgle:LineSegment
+                    End="148.857143182536,51.8411763821094" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Charger CSV vers Staging\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

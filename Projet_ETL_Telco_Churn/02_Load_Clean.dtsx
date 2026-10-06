@@ -1,0 +1,1535 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/3/2026 5:20:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-B5POHQ4"
+  DTS:CreatorName="DESKTOP-B5POHQ4\MSI"
+  DTS:DTSID="{25B00588-1152-4C8C-AAEB-A5D85B762F5C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1008.3"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="02_Load_Clean"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{3A172152-31F5-4005-8ED7-009D2EB42268}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CNX_DW_Telco_Churn]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2FBA6B89-1C16-472E-AAAC-2E3B424944CA}"
+      DTS:ObjectName="CNX_DW_Telco_Churn">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-B5POHQ4\MSSQLSERVER11;User ID=sa;Initial Catalog=DW_Telco_Churn;Provider=SQLNCLI11.1;Application Name=SSIS-02_Load_Clean-{2FBA6B89-1C16-472E-AAAC-2E3B424944CA}DESKTOP-B5POHQ4\MSSQLSERVER11.DW_Telco_Churn.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABGxkQN8RGkmVRl0dsET35AAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABjEoLvKcstM6ubDHglXmh3fwkdfzEvLytYsZTIj7Wj4QAAAAAOgAAAAAIAACAAAACHN3gNIVxUF92os3ce3swuVtngAtYkwVKifRnEhbzwFBAAAADEc1qsGQQDEtnmCd05bo1GQAAAAGIIqs5yjgMnO2CYAv2GZ89FEyjeyXuPO2PhoEWphBfpvKu2NfcDjux7tTKemLW0tOZi6KI8NrH2nhhpHmJ0XEg</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Nettoyer Staging vers Clean"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{311A5D2F-6F08-4DC7-AAC5-60408A3EC02E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Nettoyer Staging vers Clean"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Nettoyer Staging vers Clean\Conversion de données"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="Conversion de données"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données].Columns[SeniorCitizen]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="SeniorCitizen"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données].Columns[tenure]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="tenure"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[tenure]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données].Columns[TotalCharges_Prepared]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="TotalCharges_Prepared"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[TotalCharges_Prepared]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données].Columns[MonthlyCharges_Prepared]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="MonthlyCharges_Prepared"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[MonthlyCharges_Prepared]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[SeniorCitizen_Int]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[SeniorCitizen_Int]"
+                      name="SeniorCitizen_Int"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[tenure_Int]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[tenure_Int]"
+                      name="tenure_Int"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[tenure]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[MonthlyCharges_Float]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[MonthlyCharges_Float]"
+                      name="MonthlyCharges_Float"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[MonthlyCharges_Prepared]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[TotalCharges_Float]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[TotalCharges_Float]"
+                      name="TotalCharges_Float"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[TotalCharges_Prepared]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Nettoyer Staging vers Clean\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Clean_TelcoChurn]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CNX_DW_Telco_Churn]"
+                  connectionManagerRefId="Package.ConnectionManagers[CNX_DW_Telco_Churn]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[customerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="customerID"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[customerID]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[gender]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="gender"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[gender]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Partner]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Partner"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Partner]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Dependents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Dependents"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Dependents]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PhoneService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PhoneService"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PhoneService]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[MultipleLines]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MultipleLines"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MultipleLines]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[InternetService]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="InternetService"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[InternetService]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[OnlineSecurity]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineSecurity"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[OnlineBackup]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OnlineBackup"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[DeviceProtection]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="DeviceProtection"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[TechSupport]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TechSupport"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TechSupport]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[StreamingTV]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingTV"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingTV]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[StreamingMovies]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="StreamingMovies"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Contract]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Contract"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Contract]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PaperlessBilling]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="PaperlessBilling"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[PaymentMethod]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="PaymentMethod"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Churn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Churn"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Churn]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Churn]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[SeniorCitizen_Int]"
+                      cachedDataType="i4"
+                      cachedName="SeniorCitizen_Int"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[SeniorCitizen_Int]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[tenure_Int]"
+                      cachedDataType="i4"
+                      cachedName="tenure_Int"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[tenure_Int]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[MonthlyCharges_Float]"
+                      cachedDataType="r8"
+                      cachedName="MonthlyCharges_Float"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[MonthlyCharges_Float]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[TotalCharges_Float]"
+                      cachedDataType="r8"
+                      cachedName="TotalCharges_Float"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données].Columns[TotalCharges_Float]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[ChurnFlag_Prepared]"
+                      cachedDataType="i4"
+                      cachedName="ChurnFlag_Prepared"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ChurnFlag]"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[ChurnFlag_Prepared]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[SeniorCitizen]"
+                      dataType="i4"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[tenure]"
+                      dataType="i4"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[MonthlyCharges]"
+                      dataType="r8"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[TotalCharges]"
+                      dataType="r8"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Churn" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[ChurnFlag]"
+                      dataType="i4"
+                      name="ChurnFlag" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Nettoyer Staging vers Clean\Préparer données Clean"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Colonne dérivée;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Crée de nouvelles valeurs de colonne en appliquant des expressions aux colonnes d'entrée de transformation. Créez de nouvelles colonnes ou remplacez celles qui existent déjà. Par exemple, concaténez les valeurs de la colonne 'prénom' et de la colonne 'nom' pour créer une colonne 'nom complet'."
+              name="Préparer données Clean"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée]"
+                  description="Entrée de la transformation de colonnes dérivées"
+                  name="Entrée de colonne dérivée">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée].Columns[TotalCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TotalCharges"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TotalCharges]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée].Columns[Churn]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Churn"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Churn]" />
+                    <inputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée].Columns[MonthlyCharges]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="MonthlyCharges"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée]"
+                  description="Sortie par défaut de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  name="Sortie de colonne dérivée"
+                  synchronousInputId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[TotalCharges_Prepared]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[TotalCharges_Prepared]"
+                      name="TotalCharges_Prepared"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[LEN]([TRIM](#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TotalCharges]})) == 0 ? "0" : [REPLACE]([TRIM](#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TotalCharges]}),".",",")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEN(TRIM(TotalCharges)) == 0 ? "0" : REPLACE(TRIM(TotalCharges),".",",")</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[ChurnFlag_Prepared]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[ChurnFlag_Prepared]"
+                      name="ChurnFlag_Prepared"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[TRIM](#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Churn]}) == "Yes" ? 1 : 0</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Churn) == "Yes" ? 1 : 0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[MonthlyCharges_Prepared]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Calcul"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée].Columns[MonthlyCharges_Prepared]"
+                      name="MonthlyCharges_Prepared"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression de colonne dérivée"
+                          name="Expression">[REPLACE]([TRIM](#{Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]}),".",",")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expression claire de colonne dérivée"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACE(TRIM(MonthlyCharges),".",",")</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie d'erreur de colonne dérivée]"
+                  description="Sortie d'erreur de la transformation de colonnes dérivées"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de colonne dérivée"
+                  synchronousInputId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie d'erreur de colonne dérivée].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Nettoyer Staging vers Clean\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Stg_TelcoChurn]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=17.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CNX_DW_Telco_Churn]"
+                  connectionManagerRefId="Package.ConnectionManagers[CNX_DW_Telco_Churn]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[customerID]"
+                      name="customerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[gender]"
+                      name="gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Partner]"
+                      name="Partner"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Dependents]"
+                      name="Dependents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[tenure]"
+                      name="tenure"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[InternetService]"
+                      name="InternetService"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Contract]"
+                      name="Contract"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      length="100"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MonthlyCharges]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[MonthlyCharges]"
+                      name="MonthlyCharges"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[TotalCharges]"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[TotalCharges]"
+                      name="TotalCharges"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Churn]"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[Churn]"
+                      name="Churn"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="customerID" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="gender" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="SeniorCitizen" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Partner" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dependents" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="tenure" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PhoneService" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MultipleLines" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="InternetService" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineSecurity" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OnlineBackup" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="DeviceProtection" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TechSupport" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingTV" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="StreamingMovies" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Contract" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="PaperlessBilling" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="PaymentMethod" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="MonthlyCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TotalCharges" />
+                    <externalMetadataColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Churn" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[customerID]"
+                      name="customerID" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[gender]"
+                      name="gender" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[SeniorCitizen]"
+                      name="SeniorCitizen" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Partner]"
+                      name="Partner" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Dependents]"
+                      name="Dependents" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[tenure]"
+                      name="tenure" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PhoneService]"
+                      name="PhoneService" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MultipleLines]"
+                      name="MultipleLines" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[InternetService]"
+                      name="InternetService" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineSecurity]"
+                      name="OnlineSecurity" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[OnlineBackup]"
+                      name="OnlineBackup" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[DeviceProtection]"
+                      name="DeviceProtection" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[TechSupport]"
+                      name="TechSupport" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingTV]"
+                      name="StreamingTV" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[StreamingMovies]"
+                      name="StreamingMovies" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Contract]"
+                      name="Contract" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PaperlessBilling]"
+                      name="PaperlessBilling" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[PaymentMethod]"
+                      name="PaymentMethod" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthlyCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[MonthlyCharges]"
+                      name="MonthlyCharges" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalCharges]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[TotalCharges]"
+                      name="TotalCharges" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Churn]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[Churn]"
+                      name="Churn" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Nettoyer Staging vers Clean.Paths[Sortie de colonne dérivée]"
+              endId="Package\Nettoyer Staging vers Clean\Conversion de données.Inputs[Entrée de conversion de données]"
+              name="Sortie de colonne dérivée"
+              startId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Outputs[Sortie de colonne dérivée]" />
+            <path
+              refId="Package\Nettoyer Staging vers Clean.Paths[Sortie de conversion de données]"
+              endId="Package\Nettoyer Staging vers Clean\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de conversion de données"
+              startId="Package\Nettoyer Staging vers Clean\Conversion de données.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\Nettoyer Staging vers Clean.Paths[Sortie de source OLE DB]"
+              endId="Package\Nettoyer Staging vers Clean\Préparer données Clean.Inputs[Entrée de colonne dérivée]"
+              name="Sortie de source OLE DB"
+              startId="Package\Nettoyer Staging vers Clean\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Cette section CDATA contient des informations sur la disposition du package. Elle comprend des informations telles que les coordonnées (x,y), la largeur et la hauteur.-->
+<!--Si vous modifiez manuellement cette section et commettez une erreur, vous pouvez la supprimer. -->
+<!--Le package pourra toujours se charger normalement, mais les informations de disposition précédente seront perdues et le concepteur réorganisera automatiquement les éléments sur l'aire de conception.-->
+<Objects
+  Version="8">
+  <!--Chaque nœud ci-dessous contiendra des propriétés qui n'affectent pas le comportement d'exécution.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Nettoyer Staging vers Clean"
+          TopLeft="122.857143118673,68.8235293514382" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Nettoyer Staging vers Clean">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Nettoyer Staging vers Clean\Source OLE DB"
+          TopLeft="59.285714411918,29.0588235039406" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Nettoyer Staging vers Clean\Destination OLE DB"
+          TopLeft="307.142857796684,269.176470352292" />
+        <NodeLayout
+          Size="188,41.6"
+          Id="Package\Nettoyer Staging vers Clean\Conversion de données"
+          TopLeft="251.428571963797,188.117646893931" />
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Nettoyer Staging vers Clean\Préparer données Clean"
+          TopLeft="195.71428613091,115.47058813408" />
+        <EdgeLayout
+          Id="Package\Nettoyer Staging vers Clean.Paths[Sortie de colonne dérivée]"
+          TopLeft="290.91428613091,157.07058813408">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54.5142858328869,31.0470587598514"
+              Start="0,0"
+              End="54.5142858328869,23.5470587598514">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.5235293799257" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.5235293799257"
+                    Point2="0,15.5235293799257"
+                    Point3="4,15.5235293799257" />
+                  <mssgle:LineSegment
+                    End="50.5142858328869,15.5235293799257" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50.5142858328869,15.5235293799257"
+                    Point2="54.5142858328869,15.5235293799257"
+                    Point3="54.5142858328869,19.5235293799257" />
+                  <mssgle:LineSegment
+                    End="54.5142858328869,23.5470587598514" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Nettoyer Staging vers Clean.Paths[Sortie de source OLE DB]"
+          TopLeft="134.085714411918,70.6588235039406">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="156.828571718992,44.8117646301391"
+              Start="0,0"
+              End="156.828571718992,37.3117646301391">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4058823150696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.4058823150696"
+                    Point2="0,22.4058823150696"
+                    Point3="4,22.4058823150696" />
+                  <mssgle:LineSegment
+                    End="152.828571718992,22.4058823150696" />
+                  <mssgle:CubicBezierSegment
+                    Point1="152.828571718992,22.4058823150696"
+                    Point2="156.828571718992,22.4058823150696"
+                    Point3="156.828571718992,26.4058823150696" />
+                  <mssgle:LineSegment
+                    End="156.828571718992,37.3117646301391" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Nettoyer Staging vers Clean.Paths[Sortie de conversion de données]"
+          TopLeft="345.428571963797,229.717646893931">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="46.9142858328868,39.4588234583606"
+              Start="0,0"
+              End="46.9142858328868,31.9588234583606">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.7294117291803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.7294117291803"
+                    Point2="0,19.7294117291803"
+                    Point3="4,19.7294117291803" />
+                  <mssgle:LineSegment
+                    End="42.9142858328868,19.7294117291803" />
+                  <mssgle:CubicBezierSegment
+                    Point1="42.9142858328868,19.7294117291803"
+                    Point2="46.9142858328868,19.7294117291803"
+                    Point3="46.9142858328868,23.7294117291803" />
+                  <mssgle:LineSegment
+                    End="46.9142858328868,31.9588234583606" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="c"
+          ParentId="Package\Nettoyer Staging vers Clean"
+          FontInfo="{assembly:Null}"
+          Size="34.4,60"
+          Id="80df7459-13a3-49a2-b091-4f8b805c9817"
+          TopLeft="629.46428705425,166.323529265976" />
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Nettoyer Staging vers Clean\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Nettoyer Staging vers Clean\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
